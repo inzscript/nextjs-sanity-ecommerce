@@ -1,6 +1,6 @@
 import React from 'react'
 import { client } from '../lib/client'
-import { Products, FooterBanner, HeroBanner } from '../components'
+import { Product, FooterBanner, HeroBanner } from '../components'
 
 const Home = ( {products, bannerData} ) => {
   return (
@@ -14,8 +14,7 @@ const Home = ( {products, bannerData} ) => {
       </div>
 
       <div className='products-container'>
-        {products?.map(
-        (product) => product.name)}
+        {products?.map((product) => product.name)}
       </div>
 
       <FooterBanner />
@@ -24,7 +23,7 @@ const Home = ( {products, bannerData} ) => {
 }
 
 export const getServerSideProps = async () => {
-  const query = '*[_type == "products"]';
+  const query = '*[_type == "product"]';
   const products = await client.fetch(query);
 
   const bannerQuery = '*[_type == "banner"]';
